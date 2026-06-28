@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="760" viewBox="0 0 1180 760">
+  <defs>
+    <style>
+      .bg { fill: #0b0b10; }
+      .table { fill: #171722; stroke: #ff2d55; stroke-width: 2; rx: 8; }
+      .title { fill: #ffffff; font-family: Arial, sans-serif; font-size: 20px; font-weight: bold; }
+      .field { fill: #d8d4df; font-family: Arial, sans-serif; font-size: 15px; }
+      .pk { fill: #f6b44b; font-family: Arial, sans-serif; font-size: 15px; font-weight: bold; }
+      .fk { fill: #42d5d5; font-family: Arial, sans-serif; font-size: 15px; font-weight: bold; }
+      .line { stroke: #ffffff; stroke-width: 2.5; fill: none; }
+      .label { fill: #ffffff; font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; }
+      .note { fill: #aaa4b4; font-family: Arial, sans-serif; font-size: 14px; }
+      .main-title { fill: #ff2d55; font-family: Arial, sans-serif; font-size: 30px; font-weight: bold; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1180" height="760"/>
+  <text x="40" y="50" class="main-title">DER - Crimson Otaku</text>
+  <text x="40" y="78" class="note">Diagrama simples do banco de dados usado no projeto.</text>
+
+  <!-- categorias -->
+  <rect x="50" y="130" width="250" height="150" class="table"/>
+  <text x="70" y="165" class="title">categorias</text>
+  <text x="70" y="200" class="pk">PK id</text>
+  <text x="70" y="225" class="field">nome</text>
+  <text x="70" y="250" class="field">descricao</text>
+
+  <!-- camisetas -->
+  <rect x="445" y="105" width="290" height="250" class="table"/>
+  <text x="465" y="140" class="title">camisetas</text>
+  <text x="465" y="175" class="pk">PK id</text>
+  <text x="465" y="200" class="fk">FK categoria_id</text>
+  <text x="465" y="225" class="field">nome</text>
+  <text x="465" y="250" class="field">descricao</text>
+  <text x="465" y="275" class="field">preco</text>
+  <text x="465" y="300" class="field">imagem / imagem2</text>
+  <text x="465" y="325" class="field">tamanho / estoque / ativo</text>
+
+  <!-- pedidos -->
+  <rect x="870" y="130" width="260" height="220" class="table"/>
+  <text x="890" y="165" class="title">pedidos</text>
+  <text x="890" y="200" class="pk">PK id</text>
+  <text x="890" y="225" class="fk">FK camiseta_id</text>
+  <text x="890" y="250" class="field">cliente</text>
+  <text x="890" y="275" class="field">email / telefone</text>
+  <text x="890" y="300" class="field">quantidade / tamanho</text>
+  <text x="890" y="325" class="field">valor_total / status</text>
+
+  <!-- camiseta_tags -->
+  <rect x="445" y="465" width="290" height="150" class="table"/>
+  <text x="465" y="500" class="title">camiseta_tags</text>
+  <text x="465" y="535" class="pk">PK camiseta_id + tag_id</text>
+  <text x="465" y="560" class="fk">FK camiseta_id</text>
+  <text x="465" y="585" class="fk">FK tag_id</text>
+
+  <!-- tags -->
+  <rect x="870" y="465" width="260" height="130" class="table"/>
+  <text x="890" y="500" class="title">tags</text>
+  <text x="890" y="535" class="pk">PK id</text>
+  <text x="890" y="560" class="field">nome</text>
+
+  <!-- relationships -->
+  <path d="M300 205 L445 205" class="line"/>
+  <text x="325" y="190" class="label">1</text>
+  <text x="420" y="190" class="label">N</text>
+  <text x="330" y="230" class="note">categoria possui camisetas</text>
+
+  <path d="M735 230 L870 230" class="line"/>
+  <text x="755" y="215" class="label">1</text>
+  <text x="845" y="215" class="label">N</text>
+  <text x="750" y="255" class="note">camiseta aparece em pedidos</text>
+
+  <path d="M590 355 L590 465" class="line"/>
+  <text x="605" y="385" class="label">1</text>
+  <text x="605" y="450" class="label">N</text>
+  <text x="610" y="420" class="note">camiseta recebe tags</text>
+
+  <path d="M735 540 L870 540" class="line"/>
+  <text x="755" y="525" class="label">N</text>
+  <text x="845" y="525" class="label">1</text>
+  <text x="760" y="565" class="note">tags ligadas pela tabela do meio</text>
+
+  <rect x="50" y="650" width="1080" height="55" fill="#11111a" stroke="#2d2d3a" stroke-width="1" rx="8"/>
+  <text x="70" y="683" class="note">Resumo: categorias 1:N camisetas | camisetas 1:N pedidos | camisetas N:N tags usando a tabela camiseta_tags.</text>
+</svg>
